@@ -15,8 +15,12 @@ const Board: FC<BoardProps> = ({ children, className }) => {
 
     return (
         <div
-            className={clsx("grid gap-6 p-6 border", className)}
-            style={{ gridTemplateColumns: `repeat(${size}, minmax(0, 1fr))` }}
+            className={clsx(
+                "grid gap-8 p-8 rounded-3xl",
+                "bg-slate-100 shadow-inner bg-center bg-cover",
+                className
+            )}
+            style={{ gridTemplateColumns: `repeat(${size}, 1fr)` }}
         >
             {children}
         </div>
