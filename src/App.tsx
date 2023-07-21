@@ -23,7 +23,7 @@ const fruits = [
 function App() {
     const [selectedCards, setSelectedCards] = useState<number[]>([]);
     const [matched, setMatched] = useState<number[]>([]);
-    const [difficulty, setDifficulty] = useState(0);
+    const [difficulty, setDifficulty] = useState(1);
     const items = useMemo(
         () => shuffle(
             Array<string[]>(maxSelectable)
