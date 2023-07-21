@@ -71,6 +71,7 @@ function App() {
                             <Card
                                 key={index}
                                 isFlipped={isSelected(index)}
+                                isCorrect={matched.includes(index)}
                                 onSelect={() => onCardSelect(index)}
                             >
                                 <img
@@ -83,7 +84,7 @@ function App() {
                 </div>
                 <div className="text-center">
                     <h1 className="text-4xl font-bold mb-10 uppercase">
-                        Memory game
+                        Matching Cards
                     </h1>
 
                     <p className="mb-2 text-slate-500">Difficulty</p>
