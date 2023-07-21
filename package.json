@@ -1,5 +1,6 @@
 {
-  "name": "memory-match-game",
+  "name": "matching-cards",
+  "homepage": "https://mehranarji.github.com/matching-cards",
   "private": true,
   "version": "0.0.0",
   "type": "module",
