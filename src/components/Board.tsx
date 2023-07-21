@@ -1,4 +1,4 @@
-import clsx from "clsx";
+import classnames from "classnames";
 import { FC, useMemo } from "react";
 
 interface BoardProps {
@@ -15,7 +15,7 @@ const Board: FC<BoardProps> = ({ children, className }) => {
 
     return (
         <div
-            className={clsx(
+            className={classnames(
                 "grid gap-8 p-8 rounded-3xl",
                 "bg-slate-100 shadow-inner bg-center bg-cover",
                 className

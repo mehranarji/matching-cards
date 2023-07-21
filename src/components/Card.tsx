@@ -1,22 +1,22 @@
-import clsx from "clsx";
+import classnames from "classnames";
 import { FC } from "react";
 
 export interface CardProps {
     children: React.ReactNode;
     isFlipped?: boolean;
-    isCorrect?: boolean;
+    className?: string;
     onSelect?: () => void;
 }
 
-const Card: FC<CardProps> = ({ children, isFlipped, isCorrect, onSelect }) => {
+const Card: FC<CardProps> = ({ children, className, isFlipped, onSelect }) => {
     return (
-        <div
-            className="aspect-square relative select-none cursor-pointer"
+        <button
+            className={classnames("aspect-square relative select-none cursor-pointer", className)}
             onClick={() => onSelect?.()}
         >
             {/* card front */}
             <div
-                className={clsx(
+                className={classnames(
                     "bg-white",
                     "shadow-md",
                     "rounded-3xl backface-hidden",
@@ -32,26 +32,22 @@ const Card: FC<CardProps> = ({ children, isFlipped, isCorrect, onSelect }) => {
 
             {/* card back */}
             <div
-                className={clsx(
+                className={classnames(
                     "bg-white",
                     "border-white shadow-lg",
                     "rounded-2xl backface-hidden",
                     "absolute inset-0",
                     "transition-all active:scale-95",
                     "backdrop-blur-lg",
-                    "p-8",
+                    "p-6",
                     {
-                        "before:bg-green-600 before:h-2 before:w-2 before:absolute before:bottom-2 before:left-1/2": isCorrect,
-                        "before:rounded-full before:-translate-x-1/2": isCorrect,
-                        // "from-slate-100 to-slate-200 bg-gradient-to-tr": !isCorrect,
-                        // "bg-green-100 shadow-green-400": isCorrect,
                         flip: !isFlipped,
                     }
                 )}
             >
-                {children}
+                    {children}
             </div>
-        </div>
+        </button>
     );
 };
 

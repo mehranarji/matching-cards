@@ -4,6 +4,7 @@ import { useEffect, useMemo, useState } from "react";
 import Board from "./components/Board";
 import Card from "./components/Card";
 import Container from "./components/Container";
+import Button from "./components/Button";
 
 const maxSelectable = 2;
 const fruits = [
@@ -20,13 +21,18 @@ const fruits = [
 ];
 
 function App() {
-    const items = useMemo(
-        () => shuffle(Array<string[]>(maxSelectable).fill(fruits).flat()),
-        []
-    );
     const [selectedCards, setSelectedCards] = useState<number[]>([]);
     const [matched, setMatched] = useState<number[]>([]);
-
+    const [difficulty, setDifficulty] = useState(0);
+    const items = useMemo(
+        () => shuffle(
+            Array<string[]>(maxSelectable)
+                .fill(fruits.slice(0, difficulty === 0 ? 3 : difficulty === 1 ? 6 : 10))
+                .flat()
+            ),
+        [difficulty]
+    );
+    
     useEffect(() => {
         if (
             selectedCards.length > 1 &&
@@ -35,6 +41,11 @@ function App() {
             setMatched((m) => [...m, ...selectedCards]);
         }
     }, [selectedCards, items]);
+
+    useEffect(() => {
+        setSelectedCards([]);
+        setMatched([]);
+    }, [difficulty]);
 
     const isSelected = (index: number) =>
         selectedCards.includes(index) || matched.includes(index);
@@ -53,14 +64,13 @@ function App() {
 
     return (
         <Container>
-            <div className="flex gap-4 items-center justify-center h-screen">
-                <div className="basis-full lg:basis-1/2">
+            <div className="grid grid-cols-1 xl:grid-cols-2 gap-4 items-center justify-center h-screen">
+                <div>
                     <Board className="mx-auto">
                         {items.map((fruit, index) => (
                             <Card
                                 key={index}
                                 isFlipped={isSelected(index)}
-                                isCorrect={matched.includes(index)}
                                 onSelect={() => onCardSelect(index)}
                             >
                                 <img
@@ -71,22 +81,22 @@ function App() {
                         ))}
                     </Board>
                 </div>
-                <div className="hidden lg:block lg:basis-1/2 text-center">
+                <div className="text-center">
                     <h1 className="text-4xl font-bold mb-10 uppercase">
                         Memory game
                     </h1>
 
                     <p className="mb-2 text-slate-500">Difficulty</p>
-                    <div className="flex gap-2 justify-center items-baseline">
-                        <button className="px-4 py-2 rounded-lg text-lg bg-sky-600 text-white">
+                    <div className="flex gap-2 justify-center items-baseline mb-5">
+                        <Button isActive={difficulty === 0} onClick={() => setDifficulty(0)}>
                             Easy
-                        </button>
-                        <button className="px-4 py-2 rounded-lg text-lg bg-slate-100">
+                        </Button>
+                        <Button isActive={difficulty === 1} onClick={() => setDifficulty(1)}>
                             Medium
-                        </button>
-                        <button className="px-4 py-2 rounded-lg text-lg bg-slate-100">
+                        </Button>
+                        <Button isActive={difficulty === 2} onClick={() => setDifficulty(2)}>
                             Hard
-                        </button>
+                        </Button>
                     </div>
                 </div>
             </div>

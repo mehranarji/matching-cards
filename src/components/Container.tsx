@@ -1,4 +1,4 @@
-import clsx from "clsx";
+import classnames from "classnames";
 import { FC } from "react";
 
 interface ContainerProps {
@@ -7,7 +7,7 @@ interface ContainerProps {
 }
 
 const Container: FC<ContainerProps> = ({ className, children }) => {
-    return <div className={clsx("container mx-auto", className)}>{children}</div>;
+    return <div className={classnames("container mx-auto px-4", className)}>{children}</div>;
 };
 
 export default Container;

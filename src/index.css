@@ -15,3 +15,33 @@
         backface-visibility: visible;
     }
 }
+
+@layer components {
+    .correct {
+        position: relative;
+    }
+    
+    .correct::before {
+        content: "";
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        left: 0;
+        top: 0;
+        animation: celebrate .3s infinite ease-in;
+        box-shadow: 0 0 0px 5px green;
+        @apply rounded-3xl;
+    }
+}
+
+@keyframes celebrate {
+    from {
+        /* transform: scale(1); */
+        /* opacity: .8; */
+    }
+
+    to {
+        /* transform: scale(1.3); */
+        /* opacity: 0; */
+    }
+}
