@@ -4,11 +4,12 @@ import { FC } from "react";
 export interface CardProps {
     children: React.ReactNode;
     isFlipped?: boolean;
+    isCorrect?: boolean;
     className?: string;
     onSelect?: () => void;
 }
 
-const Card: FC<CardProps> = ({ children, className, isFlipped, onSelect }) => {
+const Card: FC<CardProps> = ({ children, className, isFlipped, isCorrect, onSelect }) => {
     return (
         <button
             className={classnames("aspect-square relative select-none cursor-pointer", className)}
@@ -17,7 +18,7 @@ const Card: FC<CardProps> = ({ children, className, isFlipped, onSelect }) => {
             {/* card front */}
             <div
                 className={classnames(
-                    "bg-white",
+                    "bg-white dark:bg-slate-800",
                     "shadow-md",
                     "rounded-3xl backface-hidden",
                     "absolute inset-0",
@@ -33,7 +34,7 @@ const Card: FC<CardProps> = ({ children, className, isFlipped, onSelect }) => {
             {/* card back */}
             <div
                 className={classnames(
-                    "bg-white",
+                    "bg-white dark:bg-slate-800",
                     "border-white shadow-lg",
                     "rounded-2xl backface-hidden",
                     "absolute inset-0",
@@ -42,6 +43,7 @@ const Card: FC<CardProps> = ({ children, className, isFlipped, onSelect }) => {
                     "p-6",
                     {
                         flip: !isFlipped,
+                        "opacity-40": isCorrect,
                     }
                 )}
             >

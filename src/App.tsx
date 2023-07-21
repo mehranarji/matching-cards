@@ -23,14 +23,14 @@ const fruits = [
 function App() {
     const [selectedCards, setSelectedCards] = useState<number[]>([]);
     const [matched, setMatched] = useState<number[]>([]);
-    const [difficulty, setDifficulty] = useState(0);
+    const [count, setCount] = useState(6);
     const items = useMemo(
         () => shuffle(
             Array<string[]>(maxSelectable)
-                .fill(fruits.slice(0, difficulty === 0 ? 3 : difficulty === 1 ? 6 : 10))
+                .fill(fruits.slice(0, count))
                 .flat()
             ),
-        [difficulty]
+        [count]
     );
     
     useEffect(() => {
@@ -45,7 +45,7 @@ function App() {
     useEffect(() => {
         setSelectedCards([]);
         setMatched([]);
-    }, [difficulty]);
+    }, [count]);
 
     const isSelected = (index: number) =>
         selectedCards.includes(index) || matched.includes(index);
@@ -71,6 +71,7 @@ function App() {
                             <Card
                                 key={index}
                                 isFlipped={isSelected(index)}
+                                isCorrect={matched.includes(index)}
                                 onSelect={() => onCardSelect(index)}
                             >
                                 <img
@@ -81,23 +82,27 @@ function App() {
                         ))}
                     </Board>
                 </div>
+
                 <div className="text-center">
                     <h1 className="text-4xl font-bold mb-10 uppercase">
-                        Memory game
+                        Matching Cards
                     </h1>
 
-                    <p className="mb-2 text-slate-500">Difficulty</p>
-                    <div className="flex gap-2 justify-center items-baseline mb-5">
-                        <Button isActive={difficulty === 0} onClick={() => setDifficulty(0)}>
+                    <p className="mb-2 text-slate-500 dark:text-slate-400">Difficulty</p>
+                    <div className="flex gap-2 justify-center items-baseline mb-8">
+                        <Button isActive={count === 3} onClick={() => setCount(3)}>
                             Easy
                         </Button>
-                        <Button isActive={difficulty === 1} onClick={() => setDifficulty(1)}>
+                        <Button isActive={count === 6} onClick={() => setCount(6)}>
                             Medium
                         </Button>
-                        <Button isActive={difficulty === 2} onClick={() => setDifficulty(2)}>
+                        <Button isActive={count === 10} onClick={() => setCount(10)}>
                             Hard
                         </Button>
                     </div>
+
+                    <p className="mb-2 text-slate-500 dark:text-slate-400">Pairs</p>
+                    <p className="text-3xl font-bold">{matched.length / 2} <span className="text-slate-300 dark:text-slate-500">/ {count}</span></p>
                 </div>
             </div>
         </Container>

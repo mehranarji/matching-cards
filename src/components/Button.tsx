@@ -12,11 +12,11 @@ const Button: FC<ButtonProps> = ({ children, className, isActive, ...rest }) => 
                 "px-4 py-2 rounded-lg text-lg",
                 "transition-colors",
                 {
-                    "bg-slate-200 text-black": !isActive,
-                    "hover:bg-slate-300": !isActive,
+                    "bg-slate-200 text-black dark:bg-slate-700 dark:text-white": !isActive,
+                    "hover:bg-slate-200/60 dark:hover:bg-slate-700/60": !isActive,
 
-                    "bg-sky-600 text-white": isActive,
-                    "hover:bg-sky-700": isActive,
+                    "bg-sky-600 text-white dark:bg-sky-700": isActive,
+                    "hover:bg-sky-600/60 dark:hover:bg-sky-700/60": isActive,
                 },
                 className
             )}
