@@ -88,7 +88,7 @@ function App() {
                         Matching Cards
                     </h1>
 
-                    <p className="mb-2 text-slate-500">Difficulty</p>
+                    <p className="mb-2 text-slate-500 dark:text-slate-400">Difficulty</p>
                     <div className="flex gap-2 justify-center items-baseline mb-8">
                         <Button isActive={count === 3} onClick={() => setCount(3)}>
                             Easy
@@ -101,8 +101,8 @@ function App() {
                         </Button>
                     </div>
 
-                    <p className="mb-2 text-slate-500">Pairs</p>
-                    <p className="text-3xl font-bold">{matched.length / 2} <span className="text-slate-300">/ {count}</span></p>
+                    <p className="mb-2 text-slate-500 dark:text-slate-400">Pairs</p>
+                    <p className="text-3xl font-bold">{matched.length / 2} <span className="text-slate-300 dark:text-slate-500">/ {count}</span></p>
                 </div>
             </div>
         </Container>

@@ -18,7 +18,7 @@ const Card: FC<CardProps> = ({ children, className, isFlipped, isCorrect, onSele
             {/* card front */}
             <div
                 className={classnames(
-                    "bg-white",
+                    "bg-white dark:bg-slate-800",
                     "shadow-md",
                     "rounded-3xl backface-hidden",
                     "absolute inset-0",
@@ -34,7 +34,7 @@ const Card: FC<CardProps> = ({ children, className, isFlipped, isCorrect, onSele
             {/* card back */}
             <div
                 className={classnames(
-                    "bg-white",
+                    "bg-white dark:bg-slate-800",
                     "border-white shadow-lg",
                     "rounded-2xl backface-hidden",
                     "absolute inset-0",
