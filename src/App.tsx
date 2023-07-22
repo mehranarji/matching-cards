@@ -64,7 +64,7 @@ function App() {
 
     return (
         <Container>
-            <div className="grid grid-cols-1 xl:grid-cols-2 gap-4 items-center justify-center h-screen">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 items-center justify-center min-h-screen py-10">
                 <div>
                     <Board className="mx-auto">
                         {items.map((fruit, index) => (

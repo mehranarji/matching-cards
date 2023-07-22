@@ -16,7 +16,7 @@ const Board: FC<BoardProps> = ({ children, className }) => {
     return (
         <div
             className={classnames(
-                "grid gap-8 p-8 rounded-3xl",
+                "grid gap-2 xl:gap-6 p-2 xl:p-6 rounded-xl xl:rounded-3xl",
                 "bg-slate-100 shadow-inner dark:bg-slate-700 dark:shadow-slate-800",
                 className
             )}
