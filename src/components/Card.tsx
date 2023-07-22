@@ -20,7 +20,7 @@ const Card: FC<CardProps> = ({ children, className, isFlipped, isCorrect, onSele
                 className={classnames(
                     "bg-white dark:bg-slate-800",
                     "shadow-md",
-                    "rounded-3xl backface-hidden",
+                    "rounded-xl xl:rounded-3xl backface-hidden",
                     "absolute inset-0",
                     "transition-transform active:scale-95",
                     "text-6xl lg:text-9xl flex items-center justify-center",
@@ -36,11 +36,11 @@ const Card: FC<CardProps> = ({ children, className, isFlipped, isCorrect, onSele
                 className={classnames(
                     "bg-white dark:bg-slate-800",
                     "border-white shadow-lg",
-                    "rounded-2xl backface-hidden",
+                    "rounded-xl xl:rounded-3xl backface-hidden",
                     "absolute inset-0",
                     "transition-all active:scale-95",
                     "backdrop-blur-lg",
-                    "p-6",
+                    "p-3 xl:p-6",
                     {
                         flip: !isFlipped,
                         "opacity-40": isCorrect,
